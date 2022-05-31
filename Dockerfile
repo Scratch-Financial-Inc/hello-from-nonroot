@@ -1,7 +1,6 @@
 FROM golang:1.9.3-alpine AS builder
 
-RUN groupadd -g 1001 nonroot
-RUN useradd --no-create-home nonroot -s /bin/false -u 1001 -g nonroot
+RUN addgroup -S group && adduser -S nonroot -G group
 USER nonroot
 
 COPY /*.go /
